@@ -40,6 +40,14 @@ Some packages are used for the development of your project.  This includes Parce
 
 ### Commands to Install Packages
 
+- `npm i parcel --save-dev`
+- `npm i parcel-transformer-geojson --save-dev`
+- `npm i leaflet`
+- `npm i leaflet-betterscale`
+- `npm i leaflet-fullscreen`
+- `npm i leaflet.locatecontrol`
+- `npm i leaflet.zoomhome`
+- `npm i esri-leaflet`
 
 ## Configure Parcel.js
 
