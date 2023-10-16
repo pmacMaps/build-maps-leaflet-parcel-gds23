@@ -30,6 +30,17 @@ You can open your project in Visual Studio Code by right-clicking in the folder 
 
 ## Install NPM Packages
 
+You will be installing various JavaScript libraries to build the map application.  The `package.json` file contains a record of which packages (or libraries) your project is using. These are called `dependencies`. 
+
+Once you're found a library you like, you can search for it on https://www.npmjs.com/.  
+
+For example, you may discover the Leaflet Betterscale project on [GitHub](https://github.com/daniellsu/leaflet-betterscale).  You could then search for `leaflet-betterscale` on NPM.  You would find the package at https://www.npmjs.com/package/leaflet-betterscale.  You can install the package by typing `npm i leaflet-betterscale` in the command line.
+
+Some packages are used for the development of your project.  This includes Parcel.js.  These are called `devDependencies`.  They are installed by typing `npm install some-package --save-dev`.
+
+### Commands to Install Packages
+
+
 ## Configure Parcel.js
 
 ## Create Map Application
