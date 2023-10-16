@@ -18,6 +18,17 @@ Guide to session at GeoDev Summit 2023
 - [Esri Leaflet](https://github.com/Esri/esri-leaflet): Plugin to allow access to Esri REST services
 
 ## Set-up Project with NPM 
+1. Open up `Command Prompt` application
+2. Change to project directory using `cd {path/to/folder}` command
+3. Initialize project using `npm init` command
+4. Complete project initialization via command line
+5. Type `yes` to complete initialization
+   
+You will now notice a `package.json` file in your project directory.  This file will contain a listing of project packages and other details for the development for your map application.
+
+You can open your project in Visual Studio Code by right-clicking in the folder and selecting `Open with Code`. (note, Windows 11 requires you to select "Show more options" when right-clicking the folder.)
+
+## Install NPM Packages
 
 ## Configure Parcel.js
 
