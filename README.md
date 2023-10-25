@@ -51,5 +51,29 @@ Some packages are used for the development of your project.  This includes Parce
 
 ## Configure Parcel.js
 
+We need to make a few changes to the `package.json` so that it can work with Parcel.js:
+- add `"source": "src/index.html",` (reason)
+- add `"browserslist": "> 0.5%, last 2 versions, not dead",` : (reason)
+- add `"private": true,` (reason)
+- within `scripts`, add `"start": "parcel",` : (reason)
+- within `scripts`, add `"build": "parcel build"` : (reason)
+
+We need to create a `.parcelrc` file to (reason).  In this file, we'll add:
+```
+{
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.geojson": ["parcel-transformer-geojson"]
+  }
+}
+```
+
+We will also add a few directories (folders) in our project.  The structure will look like:
+
+![parcel-map-project-folder-structure](https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/assets/12861454/10c4eed2-c05f-4e97-bd18-a0ea1e06b49c)
+
+![parcel-map-project-folder-structure-2](https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/assets/12861454/b7d54edf-4e06-4962-b90d-3fad278dba08)
+
+
 ## Create Map Application
 ### Sections of Map Application
