@@ -92,3 +92,12 @@ The `dist` directory will containt the production-ready files we can deploy on a
 9) Within the heading `section` element, add an `h1` element; and add a `button` element
 10) Before the closing `body` tag, add a `script` element; add a `type="module"` attribute; add a `src="./js/index.js"` attribute
 11) Before the closing `head` tage, add `<link rel="stylesheet" href="style.css">`
+
+### Style.css
+
+1) Import Normalize library by adding `@import '../node_modules/normalize.css/normalize.css';`
+2) Import Leaflet library by adding `@import '../node_modules/normalize.css/normalize.css';`
+3) Import Leaflet Fullscreen by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
+4) Import Leaflet Locate by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
+5) Import Leaflet Zoomhom by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
+6) Import Leaflet BetterScale by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
