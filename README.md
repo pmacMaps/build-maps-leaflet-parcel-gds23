@@ -16,6 +16,7 @@ Guide to session at GeoDev Summit 2023
 - [Leaflet Locate Control](https://github.com/domoritz/leaflet-locatecontrol): Plugin to add a "locate me" widget to map
 - [Leaflet Zoomhome](https://github.com/torfsen/leaflet.zoomhome): Plugin to add a zoom control with a default extent button
 - [Esri Leaflet](https://github.com/Esri/esri-leaflet): Plugin to allow access to Esri REST services
+- [Normalize.css](https://necolas.github.io/normalize.css/): Plugin to add standard CSS rules to web browser
 
 ## Set-up Project with NPM 
 1. Open up `Command Prompt` application
@@ -48,6 +49,7 @@ Some packages are used for the development of your project.  This includes Parce
 - `npm i leaflet.locatecontrol`
 - `npm i leaflet.zoomhome`
 - `npm i esri-leaflet`
+- `npm i normalize.css`
 
 ## Configure Parcel.js
 
