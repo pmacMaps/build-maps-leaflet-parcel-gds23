@@ -76,4 +76,17 @@ The `src` directory will contain the files we edit.
 The `dist` directory will containt the production-ready files we can deploy on a web server.
 
 ## Create Map Application
-### Sections of Map Application
+
+### Index.html
+
+1) In the `src` directory, create a `index.html` file
+2) In the `src` directory, creat a `js` directory
+3) In the `src\js` directory, create an `index.js` file
+4) In the `src` directory, create a `style.csc` file
+5) With file open in VS Code, type `html`, and select `html:5` (pre-populates file)
+6) Update the `title` element (i.e. "A Sample Webmap")
+7) Within the `body` element, create `section` elements for heading block and webmap container
+8) In the terminal or command prompt, type `npm run start` (click link or visit http://localhost:1234/ to preview website)
+9) Within the heading `section` element, add an `h1` element; and add a `button` element
+10) Before the closing `body` tag, add a `script` element; add a `type="module"` attribute; add a `src="./js/index.js"` attribute
+11) Before the closing `head` tage, add `<link rel="stylesheet" href="style.css">`
