@@ -95,9 +95,15 @@ The `dist` directory will containt the production-ready files we can deploy on a
 
 ### Style.css
 
+#### Import Libraries
 1) Import Normalize library by adding `@import '../node_modules/normalize.css/normalize.css';`
-2) Import Leaflet library by adding `@import '../node_modules/normalize.css/normalize.css';`
+2) Import Leaflet library by adding `@import '../node_modules/leaflet/dist/leaflet.css';`
 3) Import Leaflet Fullscreen by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
-4) Import Leaflet Locate by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
-5) Import Leaflet Zoomhom by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
-6) Import Leaflet BetterScale by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
+4) Import Leaflet Locate by adding `@import '../node_modules/leaflet.locatecontrol/dist/L.Control.Locate.css';`
+5) Import Leaflet Zoomhom by adding `@import '../node_modules/leaflet.zoomhome/src/css/leaflet.zoomhome.css';`
+6) Import Leaflet BetterScale by adding `@import '../node_modules/leaflet-betterscale/L.Control.BetterScale.css';`
+
+#### Set Styles for Map App
+
+Add various styles as found in insert-link.
+
