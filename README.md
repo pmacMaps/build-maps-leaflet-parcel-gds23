@@ -105,5 +105,5 @@ The `dist` directory will containt the production-ready files we can deploy on a
 
 #### Set Styles for Map App
 
-Add various styles as found in insert-link.
+Add various styles as found in [reference stylesheet](https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/blob/main/the_styles.css).
 
