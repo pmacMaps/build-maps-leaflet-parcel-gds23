@@ -107,3 +107,16 @@ The `dist` directory will containt the production-ready files we can deploy on a
 
 Add various styles as found in [reference stylesheet](https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/blob/main/the_styles.css).
 
+### JavaScript 
+
+#### Index.js
+
+This is our primary JavaScript file.  We will be importing variables from other JavaScript files (modules) into this file.  To provide some context, we will create our interactive map object.
+
+Add reference to javascript files
+
+1) Import the `map` object from Leaflet by adding `import { map } from 'leaflet';`
+2) Create a variable named `webmap`; assign it to the Leaflet `map` class; we need to define the HTML element containing the map, as well as provide an intial zoom level and center coordinates
+
+
+
