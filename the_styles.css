@@ -1,4 +1,4 @@
-/* General Rules */
+/* App Styles */
 html {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -13,22 +13,29 @@ html {
     box-sizing: inherit;
 }
 
+html,
+body {
+    min-height: 100%;
+}
+
 body {
     font-size: 1.05em;
     color: #000;
+    height: 100vh;
 }
 
+body,
 #heading,
 #webmap  {
-    width: 100%;
+    width: 100vw;
 }
 
 /* heading section */
 #heading {
-    height: 20%;
-    min-height: 20%;
-    padding: 0.75em;
+    padding: 0.5em;
     background: #b6e7d8;
+    height: 15vh;
+    max-height: 100px;
 }
 
 h1 {
@@ -45,5 +52,6 @@ h1 {
 
 /* Webmap section */
 #webmap {
-    height: 80%;
+    height: 85vh;
+    padding-top: 100px;
 }
