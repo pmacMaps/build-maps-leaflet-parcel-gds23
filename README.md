@@ -93,7 +93,7 @@ The `dist` directory will containt the production-ready files we can deploy on a
 9) In the terminal or command prompt, type `npm run start` (click link or visit http://localhost:1234/ to preview website)
 10) Within the heading `section` element, add an `h1` element; and add a `button` element
 11) Before the closing `body` tag, add a `script` element; add a `type="module"` attribute; add a `src="./js/index.js"` attribute
-12) Before the closing `head` tage, add `<link rel="stylesheet" href="style.css">`
+12) Before the closing `head` tage, add `<link rel="stylesheet" href="./css/style.css">`
 
 ### Style.css
 
