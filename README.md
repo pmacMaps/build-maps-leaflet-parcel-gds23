@@ -21,7 +21,7 @@ Guide to session at GeoDev Summit 2023
 ## Set-up Project with NPM 
 1. Open up `Command Prompt` application
 2. Change to project directory using `cd {path/to/folder}` command
-3. Alternatively, open up project directory in VS Code. Then follow steps below.
+3. Alternatively, open up project directory in VS Code. Open Terminal, then follow steps below.
 4. Initialize project using `npm init` command
 5. Complete project initialization via command line
 6. Type `yes` to complete initialization
