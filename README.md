@@ -119,6 +119,11 @@ Add reference to javascript files
 
 1) Import the `map` object from Leaflet by adding `import { map } from 'leaflet';`
 2) Create a variable named `webmap`; assign it to the Leaflet `map` class; we need to define the HTML element containing the map, as well as provide an intial zoom level and center coordinates
+3) In the `src/js` directory, create a `basemaps.js` file.  This will store our basemap objects.
+4) In the `basemaps.js` file, import Leaflet's `tileLayer` class by adding `import { tileLayer } from 'leaflet'`;
+5) Create a variable to store the OpenStreetMap basemap (`export const osm = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'});`
+6) In the `index.js` file, add `import { osm } from './basemaps.js';` so that we can set the basemap to OpenStreetMap
+7) Add OpenStreetMap to the webmap by adding `osm.addTo(webmap);` to `index.js`
 
 
 
