@@ -120,10 +120,25 @@ Add reference to javascript files
 1) Import the `map` object from Leaflet by adding `import { map } from 'leaflet';`
 2) Create a variable named `webmap`; assign it to the Leaflet `map` class; we need to define the HTML element containing the map, as well as provide an intial zoom level and center coordinates
 3) In the `src/js` directory, create a `basemaps.js` file.  This will store our basemap objects.
-4) In the `basemaps.js` file, import Leaflet's `tileLayer` class by adding `import { tileLayer } from 'leaflet'`;
-5) Create a variable to store the OpenStreetMap basemap (`export const osm = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'});`
-6) In the `index.js` file, add `import { osm } from './basemaps.js';` so that we can set the basemap to OpenStreetMap
-7) Add OpenStreetMap to the webmap by adding `osm.addTo(webmap);` to `index.js`
+
+#### Basemaps.js
+
+1) In the `basemaps.js` file, import Leaflet's `tileLayer` class by adding `import { tileLayer } from 'leaflet'`;
+2) Create a variable to store the OpenStreetMap basemap (`export const osm = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'});`
+
+#### Index.js
+1) In the `index.js` file, add `import { osm } from './basemaps.js';` so that we can set the basemap to OpenStreetMap
+2) Add OpenStreetMap to the webmap by adding `osm.addTo(webmap);` to `index.js`
+
+#### MapControls.js
+
+1) create a `mapControls.js` file in the `src/js` directory; it will be used to store our map interface objects.
+2) Import Leaflet Zoomhome by writing `import 'leaflet.zoomhome/src/js/leaflet.zoomhome.js';`
+3) Import Leaflet Locate Control by writing `import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';`
+4) Import Leaflet Better Scale by writing `import 'leaflet-betterscale/L.Control.BetterScale.js';`
+5) Create a variable for Leaflet Zoom Home control
+6) Create a variable for Leaflet Better Scale control
+7) Create a variable for Leaflet Locate control
 
 
 
