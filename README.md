@@ -17,6 +17,7 @@ Guide to session at GeoDev Summit 2023
 - [Leaflet Zoomhome](https://github.com/torfsen/leaflet.zoomhome): Plugin to add a zoom control with a default extent button
 - [Esri Leaflet](https://github.com/Esri/esri-leaflet): Plugin to allow access to Esri REST services
 - [Normalize.css](https://necolas.github.io/normalize.css/): Plugin to add standard CSS rules to web browser
+- Font Awesome (update me)
 
 ## Set-up Project with NPM 
 1. Open up `Command Prompt` application
@@ -51,6 +52,7 @@ Some packages are used for the development of your project.  This includes Parce
 - `npm i leaflet.zoomhome`
 - `npm i esri-leaflet`
 - `npm i normalize.css`
+- `npm i font-awesome`
 
 ## Configure Parcel.js
 
@@ -99,11 +101,12 @@ The `dist` directory will containt the production-ready files we can deploy on a
 
 #### Import Libraries
 1) Import Normalize library by adding `@import '../node_modules/normalize.css/normalize.css';`
-2) Import Leaflet library by adding `@import '../node_modules/leaflet/dist/leaflet.css';`
-3) Import Leaflet Fullscreen by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
-4) Import Leaflet Locate by adding `@import '../node_modules/leaflet.locatecontrol/dist/L.Control.Locate.css';`
-5) Import Leaflet Zoomhom by adding `@import '../node_modules/leaflet.zoomhome/src/css/leaflet.zoomhome.css';`
-6) Import Leaflet BetterScale by adding `@import '../node_modules/leaflet-betterscale/L.Control.BetterScale.css';`
+2) Import Fonte Aweomse library by adding `@import '../../node_modules/font-awesome/css/font-awesome.css';`
+3) Import Leaflet library by adding `@import '../node_modules/leaflet/dist/leaflet.css';`
+4) Import Leaflet Fullscreen by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
+5) Import Leaflet Locate by adding `@import '../node_modules/leaflet.locatecontrol/dist/L.Control.Locate.css';`
+6) Import Leaflet Zoomhom by adding `@import '../node_modules/leaflet.zoomhome/src/css/leaflet.zoomhome.css';`
+7) Import Leaflet BetterScale by adding `@import '../node_modules/leaflet-betterscale/L.Control.BetterScale.css';`
 
 #### Set Styles for Map App
 
@@ -140,5 +143,8 @@ Add reference to javascript files
 6) Create a variable for Leaflet Better Scale control
 7) Create a variable for Leaflet Locate control
 
+#### Index.js
 
+1) Import the new controls from `mapControls.js` (`import { zoomHomeControl, scaleBarControl, locateControl} from './mapControls.js';`)
+2) Add `zoomControl: false` property to your `webmap` variable to allow Zoom Home Control to take over the work of the zoom control
 
