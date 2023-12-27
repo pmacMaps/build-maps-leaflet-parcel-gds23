@@ -147,4 +147,21 @@ Add reference to javascript files
 
 1) Import the new controls from `mapControls.js` (`import { zoomHomeControl, scaleBarControl, locateControl} from './mapControls.js';`)
 2) Add `zoomControl: false` property to your `webmap` variable to allow Zoom Home Control to take over the work of the zoom control
+3) Add the map controls to the webmap using the `addTo()` method
+
+#### Basemaps.js
+
+1) Import the `tiledMapLayer `from Esri-Leaflet (`import { tiledMapLayer } from 'esri-leaflet';`)
+2) Create a variable to reference the USGS Imagery tiled map service (`https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer`)
+3) Create an object to reference the two basemaps (Open Street Map and USGS Imagery); set it as an exported variable
+
+#### MapControls.js
+
+1) Import the basemaps object (`import { basemapLayers} from './basemaps.js';`)
+2) Create a layer control object (`control.layers(basemapLayers, null, { collapsed: false });`)
+
+#### Index.js
+
+1) add the layer control object to your imports from `mapControls.js` statement
+2) 
 
