@@ -152,8 +152,8 @@ Add reference to javascript files
 #### Basemaps.js
 
 1) Import the `tiledMapLayer `from Esri-Leaflet (`import { tiledMapLayer } from 'esri-leaflet';`)
-2) Create a variable to reference the USGS Imagery tiled map service (`https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer`)
-3) Create an object to reference the two basemaps (Open Street Map and USGS Imagery); set it as an exported variable
+2) Create a variable to reference the Esri Imagery tiled map service (`https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer`)
+3) Create an object to reference the two basemaps (Open Street Map and Esri Imagery); set it as an exported variable
 
 #### MapControls.js
 
@@ -163,5 +163,16 @@ Add reference to javascript files
 #### Index.js
 
 1) add the layer control object to your imports from `mapControls.js` statement
-2) 
+2) We now can switch between basemaps.
+
+### Overlays.js
+
+1) Create an `overlays.js` file in `src/js` directory; it will store map overlay layers
+2) Import the `featureLayer` object from the Esri-Leaflet library. This allows use to use Esri REST services as feature layer; (`import { featureLayer } from 'esri-leaflet';`)
+3) We will be adding CAT bus routes and stops, as well ass the Capital Area Greenwaybelt from a service managed by the City of Harrisburg (`https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Multimodal_Transportation_Map_WFL1/FeatureServer`)
+4) We will create a variable reference to the parent URL
+5) Create a variable for the Capital Area Greenbelt (`export const greenbelt = featureLayer({url: `${hbg_parent_url}/5`,where: "Name = 'CAGA'"});`); notice we applied a definition query; we can view the data in map viewer to understand it
+6) Import the greenbelt object into the `index.js` file (`import { greenbelt} from './overlays.js';`)
+7) We will now see the Capital Area Greenbelt on the map with the default symbology of Leaflet; The Esri-Renderer's plugin can be used to utilize the symbology the Esri REST service was published with
+8) TODO: add other layers; symbolize layers according to symbol; image; categories
 
