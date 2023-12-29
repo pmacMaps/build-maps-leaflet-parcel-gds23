@@ -174,5 +174,9 @@ Add reference to javascript files
 5) Create a variable for the Capital Area Greenbelt (`export const greenbelt = featureLayer({url: `${hbg_parent_url}/5`,where: "Name = 'CAGA'"});`); notice we applied a definition query; we can view the data in map viewer to understand it
 6) Import the greenbelt object into the `index.js` file (`import { greenbelt} from './overlays.js';`)
 7) We will now see the Capital Area Greenbelt on the map with the default symbology of Leaflet; The Esri-Renderer's plugin can be used to utilize the symbology the Esri REST service was published with
-8) TODO: add other layers; symbolize layers according to symbol; image; categories
+8) Create variables for CAT bus stops and routes; import then into index.js; add them to the webmap using the `addTo()` method
+10) We will symbolize bus stops using a custom icon; start by importing the `icon` and `marker` objects from leaflet (`import { icon, marker } from 'leaflet';`)
+11) Create a variable to store the icon properties (`const bus_icon = icon({iconUrl: require('../icons/bus-stop.png'), iconSize: [30,30] });`)
+12) Use the `pointToLayer` method to return a `marker` using our bus stop icon
+13) TODO: customize greenbelt style
 
