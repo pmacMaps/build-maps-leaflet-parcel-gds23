@@ -178,5 +178,11 @@ Add reference to javascript files
 10) We will symbolize bus stops using a custom icon; start by importing the `icon` and `marker` objects from leaflet (`import { icon, marker } from 'leaflet';`)
 11) Create a variable to store the icon properties (`const bus_icon = icon({iconUrl: require('../icons/bus-stop.png'), iconSize: [30,30] });`)
 12) Use the `pointToLayer` method to return a `marker` using our bus stop icon
-13) TODO: customize greenbelt style
+13) Set style for greenbelt using dashed array
+14) Stop parce; We'll add Esri Leaflet Renderers to use symbology for bus routes; (`npm i esri-leaflet-renderers`);
+15) Import esri leaflet renderers in `overlays.js` file (`import 'esri-leaflet-renderers';`)
+16) notice we need to fix symbology
+17) for bus routes, add `ignoreRenderer: true` to ignore published symbology and use our bus icon instead
+18) We can retain published symbology of unique features for bus routes, but use the `style` property to increase the width
+19) TODO: work on pop-ups
 
