@@ -184,5 +184,8 @@ Add reference to javascript files
 16) notice we need to fix symbology
 17) for bus routes, add `ignoreRenderer: true` to ignore published symbology and use our bus icon instead
 18) We can retain published symbology of unique features for bus routes, but use the `style` property to increase the width
-19) TODO: work on pop-ups
+19) We will add Harrisburg Parks & Playgrounds via a GeoJSON file.  To start, we'll import the `geoJson` object from Leaflet (`import { geoJson } from 'leaflet';`)
+20) We use a `require` statement to reference the geojson file (`const parks_data = require('../data/Harrisburg_Parks_Playgrounds.geojson');`)
+21) Create a variable for parks & playgrounds layer (`export const parks_playgrounds = geoJson(parks_data, {});`).  Add this layer to import statement in `index.js`.  Add the layer to the map
+22) TODO: work on pop-ups
 
