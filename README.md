@@ -16,8 +16,9 @@ Guide to session at GeoDev Summit 2023
 - [Leaflet Locate Control](https://github.com/domoritz/leaflet-locatecontrol): Plugin to add a "locate me" widget to map
 - [Leaflet Zoomhome](https://github.com/torfsen/leaflet.zoomhome): Plugin to add a zoom control with a default extent button
 - [Esri Leaflet](https://github.com/Esri/esri-leaflet): Plugin to allow access to Esri REST services
+- [Esri Leaflet Renderers](https://developers.arcgis.com/esri-leaflet/samples/renderers-plugin/): Plugin to display symbology associated with a REST service
 - [Normalize.css](https://necolas.github.io/normalize.css/): Plugin to add standard CSS rules to web browser
-- Font Awesome (update me)
+- [Font Awesome](https://fontawesome.com/): Plugin used to display icons in Leaflet widgets
 
 ## Set-up Project with NPM 
 1. Open up `Command Prompt` application
@@ -165,7 +166,9 @@ Add reference to javascript files
 1) add the layer control object to your imports from `mapControls.js` statement
 2) We now can switch between basemaps.
 
-### Overlays.js
+#### Overlays.js
+
+###### Add layers from Esri REST Service
 
 1) Create an `overlays.js` file in `src/js` directory; it will store map overlay layers
 2) Import the `featureLayer` object from the Esri-Leaflet library. This allows use to use Esri REST services as feature layer; (`import { featureLayer } from 'esri-leaflet';`)
@@ -184,8 +187,30 @@ Add reference to javascript files
 16) notice we need to fix symbology
 17) for bus routes, add `ignoreRenderer: true` to ignore published symbology and use our bus icon instead
 18) We can retain published symbology of unique features for bus routes, but use the `style` property to increase the width
-19) We will add Harrisburg Parks & Playgrounds via a GeoJSON file.  To start, we'll import the `geoJson` object from Leaflet (`import { geoJson } from 'leaflet';`)
-20) We use a `require` statement to reference the geojson file (`const parks_data = require('../data/Harrisburg_Parks_Playgrounds.geojson');`)
-21) Create a variable for parks & playgrounds layer (`export const parks_playgrounds = geoJson(parks_data, {});`).  Add this layer to import statement in `index.js`.  Add the layer to the map
-22) TODO: work on pop-ups
 
+###### Add layer from GeoJSON file
+
+1) We will add Harrisburg Parks & Playgrounds via a GeoJSON file.  The data is available on [City of Harrisburg's Open Data Website](https://harrisburg-open-data-cohbg.opendata.arcgis.com/datasets/201e2a9538144b22b106ccd7d7d73846_0)
+2) Import the `geoJSON` object from Leaflet (`import { geoJSON } from 'leaflet';`)
+3) Use the `require` statement to reference the geojson file in the `src/data` directory.  The `parcel-transformer-geojson` library is required to package up this data type (`const parks_data = require('../data/Harrisburg_Parks_Playgrounds.geojson');`)
+22) Create a variable for parks & playgrounds layer (`export const parks_playgrounds = geoJson(parks_data, {});`).  Add this layer to import statement in `index.js`.  Add the layer to the map
+23) You can style the layer as desired
+
+###### Adding Pop-ups to Layers
+
+Pop-ups can display attributes associated with each feature.  In Leaflet, you can create HTML mark-up to display pop-up content.  You can also reference fields in the data using the `L.Util.template` class.
+
+Before using the template class, you can run functions to re-format the data in your popup.  You can constrict the number of decimal places, split strings, or even test for the presecne or absence of data for each record.
+
+Below is sample code:
+
+```
+bus_stops.bindPopup(function (layer) {
+    let content = '<div>';
+    content += '<h3 style="text-align:center">Bus Stop</h3>';
+    content += '<p>Coordinates: {Latitude}; {Longitude}</p>';
+    content += '<p>Location: {Descriptio}</p>';
+    content += '</div>';
+    return L.Util.template(content, layer.feature.properties);
+});
+```
