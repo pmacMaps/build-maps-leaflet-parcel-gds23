@@ -1,0 +1,49 @@
+/* App Styles */
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    font-size: 1.05em;
+    color: #000;
+    height: 100vh;
+}
+
+body,
+#heading,
+#webmap  {
+    width: 100vw;
+}
+
+/* heading section */
+#heading {
+    padding: 0.5em;
+    background: #b6e7d8;
+    height: 10vh;
+    max-height: 100px;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+/* Webmap section */
+#webmap {
+    height: 90vh;
+    padding-top: 100px;
+}

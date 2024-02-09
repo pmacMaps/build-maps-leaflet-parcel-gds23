@@ -1,5 +1,6 @@
 /* Import libraries */
 @import '../../node_modules/normalize.css/normalize.css';
+@import '../../node_modules/font-awesome/css/font-awesome.css';
 @import '../../node_modules/leaflet/dist/leaflet.css';
 @import '../../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';
 @import '../../node_modules/leaflet.locatecontrol/dist/L.Control.Locate.css';
@@ -48,14 +49,6 @@ body,
 
 h1 {
     font-size: 1.5em;
-}
-
-#heading button {
-    display: block;
-    margin-left: auto;
-    margin-right: 2em;
-    margin-top: -2em;
-    font-size: 1.15em;
 }
 
 /* Webmap section */

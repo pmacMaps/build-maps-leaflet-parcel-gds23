@@ -1,0 +1,31 @@
+{
+  "name": "test-map-app",
+  "version": "1.0.0",
+  "description": "test map application",
+  "main": "index.js",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "Patrick McKinney",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.10.3",
+    "parcel-transformer-geojson": "^0.0.4"
+  },
+  "dependencies": {
+    "esri-leaflet": "^3.0.12",
+    "esri-leaflet-renderers": "^3.0.1",
+    "font-awesome": "^4.7.0",
+    "leaflet": "^1.9.4",
+    "leaflet-betterscale": "^1.0.0",
+    "leaflet-fullscreen": "^1.0.2",
+    "leaflet.locatecontrol": "^0.79.0",
+    "leaflet.zoomhome": "^1.0.0",
+    "normalize.css": "^8.0.1"
+  }
+}
