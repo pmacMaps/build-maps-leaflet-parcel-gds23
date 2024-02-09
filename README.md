@@ -100,7 +100,7 @@ Within the `src` directory, create `js` and `data` directories.
 
 #### Import Libraries
 1) Import Normalize library by adding `@import '../node_modules/normalize.css/normalize.css';`
-2) Import Fonte Aweomse library by adding `@import '../../node_modules/font-awesome/css/font-awesome.css';`
+2) Import Font Aweomse library by adding `@import '../node_modules/font-awesome/css/font-awesome.css';`
 3) Import Leaflet library by adding `@import '../node_modules/leaflet/dist/leaflet.css';`
 4) Import Leaflet Fullscreen by adding `@import '../node_modules/leaflet-fullscreen/dist/leaflet.fullscreen.css';`
 5) Import Leaflet Locate by adding `@import '../node_modules/leaflet.locatecontrol/dist/L.Control.Locate.css';`
@@ -166,6 +166,14 @@ Add reference to javascript files
 
 #### Overlays.js
 
+###### Add layer from GeoJSON file
+
+1) We will add Harrisburg Parks & Playgrounds via a GeoJSON file.  The data is available on [City of Harrisburg's Open Data Website](https://harrisburg-open-data-cohbg.opendata.arcgis.com/datasets/201e2a9538144b22b106ccd7d7d73846_0)
+2) Import the `geoJSON` object from Leaflet (`import { geoJSON } from 'leaflet';`)
+3) Use the `require` statement to reference the geojson file in the `src/data` directory.  The `parcel-transformer-geojson` library is required to package up this data type (`const parks_data = require('../data/Harrisburg_Parks_Playgrounds.geojson');`)
+22) Create a variable for parks & playgrounds layer (`export const parks_playgrounds = geoJson(parks_data, {});`).  Add this layer to import statement in `index.js`.  Add the layer to the map
+23) You can style the layer as desired
+
 ###### Add layers from Esri REST Service
 
 1) Create an `overlays.js` file in `src/js` directory; it will store map overlay layers
@@ -177,7 +185,7 @@ Add reference to javascript files
 7) We will now see the Capital Area Greenbelt on the map with the default symbology of Leaflet; The Esri-Renderer's plugin can be used to utilize the symbology the Esri REST service was published with
 8) Create variables for CAT bus stops and routes; import then into index.js; add them to the webmap using the `addTo()` method
 10) We will symbolize bus stops using a custom icon; start by importing the `icon` and `marker` objects from leaflet (`import { icon, marker } from 'leaflet';`)
-11) Create a variable to store the icon properties (`const bus_icon = icon({iconUrl: require('../icons/bus-stop.png'), iconSize: [30,30] });`)
+11) Create a variable to store the icon properties (`const bus_icon = icon({iconUrl: require('../data/bus-stop.png'), iconSize: [30,30] });`)
 12) Use the `pointToLayer` method to return a `marker` using our bus stop icon
 13) Set style for greenbelt using dashed array
 14) Stop parce; We'll add Esri Leaflet Renderers to use symbology for bus routes; (`npm i esri-leaflet-renderers`);
@@ -185,14 +193,6 @@ Add reference to javascript files
 16) notice we need to fix symbology
 17) for bus routes, add `ignoreRenderer: true` to ignore published symbology and use our bus icon instead
 18) We can retain published symbology of unique features for bus routes, but use the `style` property to increase the width
-
-###### Add layer from GeoJSON file
-
-1) We will add Harrisburg Parks & Playgrounds via a GeoJSON file.  The data is available on [City of Harrisburg's Open Data Website](https://harrisburg-open-data-cohbg.opendata.arcgis.com/datasets/201e2a9538144b22b106ccd7d7d73846_0)
-2) Import the `geoJSON` object from Leaflet (`import { geoJSON } from 'leaflet';`)
-3) Use the `require` statement to reference the geojson file in the `src/data` directory.  The `parcel-transformer-geojson` library is required to package up this data type (`const parks_data = require('../data/Harrisburg_Parks_Playgrounds.geojson');`)
-22) Create a variable for parks & playgrounds layer (`export const parks_playgrounds = geoJson(parks_data, {});`).  Add this layer to import statement in `index.js`.  Add the layer to the map
-23) You can style the layer as desired
 
 ###### Adding Pop-ups to Layers
 
