@@ -159,7 +159,7 @@ This is our primary JavaScript file.  We will be importing variables from other 
 #### Index.js
 
 1) add the layer control object to your imports from `mapControls.js` statement
-2) We now can switch between basemaps.
+2) Add the layer control to the webmap (`layerControl.addTo(webmap);`)
 
 #### Overlays.js
 
