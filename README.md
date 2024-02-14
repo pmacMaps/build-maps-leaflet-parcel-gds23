@@ -161,7 +161,7 @@ This is our primary JavaScript file.  We will be importing variables from other 
 1) add the layer control object to your imports from `mapControls.js` statement
 2) Add the layer control to the webmap (`layerControl.addTo(webmap);`)
 
-#### Overlays.js
+#### Overlays.js (start here)
 
 ###### Add layer from GeoJSON file
 
@@ -209,3 +209,5 @@ bus_stops.bindPopup(function (layer) {
     return L.Util.template(content, layer.feature.properties);
 });
 ```
+
+#### Add layers to layer control?
