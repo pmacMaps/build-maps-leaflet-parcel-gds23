@@ -88,7 +88,7 @@ Next, we need to add the `src` directory.  We will store our application files h
 4) With the `index.html` file open in VS Code, type `html`, and select `html:5` (pre-populates file)
 6) Update the `title` element (i.e. "A Sample Webmap")
 7) Add `<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">` tag (helps web map feel like an app)
-8) Within the `body` element, create `section` elements for heading block and webmap container
+8) Within the `body` element, create two `section` elements (heading block and webmap container)
 9) The first `section` element should have an `id="heading"` property; the second `section` element should have an `id="webmap"` property
 10) In the terminal or command prompt, type `npm run start` (click link or visit http://localhost:1234/ to preview website)
 11) Within the heading `section` element, add an `h1` element; 
@@ -108,7 +108,7 @@ Next, we need to add the `src` directory.  We will store our application files h
 
 #### Set Styles for Map App
 
-Add various styles as found in [reference stylesheet](https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/blob/main/the_styles.css).
+Add the project styles that are found in the [reference stylesheet](https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/blob/main/src/our_styles.css).
 
 ### JavaScript 
 
@@ -116,20 +116,18 @@ Add various styles as found in [reference stylesheet](https://github.com/pmacMap
 
 This is our primary JavaScript file.  We will be importing variables from other JavaScript files (modules) into this file.  To provide some context, we will create our interactive map object.
 
-Add reference to javascript files
-
 1) Import the `map` object from Leaflet by adding `import { map } from 'leaflet';`
-2) Create a variable named `webmap`; assign it to the Leaflet `map` class; we need to define the HTML element containing the map, as well as provide an intial zoom level and center coordinates
-3) In the `src/js` directory, create a `basemaps.js` file.  This will store our basemap objects.
+2) Create a variable named `webmap`; assign it to the Leaflet `map` class (`const webmap = map('webmap', { center: [40.26, -76.89], zoom: 12});`)
+3) In the `src/js` directory, create a `basemaps.js` file.  This will store our basemap variables.
 
 #### Basemaps.js
 
 1) In the `basemaps.js` file, import Leaflet's `tileLayer` class by adding `import { tileLayer } from 'leaflet'`;
-2) Create a variable to store the OpenStreetMap basemap (`export const osm = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'});`
+2) Create a variable to reference the OpenStreetMap basemap.  We use the keyword `export` so that we can use the variable in other modules (`export const osm = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'});`
 
 #### Index.js
-1) In the `index.js` file, add `import { osm } from './basemaps.js';` so that we can set the basemap to OpenStreetMap
-2) Add OpenStreetMap to the webmap by adding `osm.addTo(webmap);` to `index.js`
+1) In the `index.js` file, add `import { osm } from './basemaps.js';` so that we can set our basemap to OpenStreetMap
+2) Add OpenStreetMap to the webmap.  We can add layers and map controls with the `addTo()` method (`osm.addTo(webmap);`)
 
 #### MapControls.js
 
@@ -149,9 +147,12 @@ Add reference to javascript files
 
 #### Basemaps.js
 
-1) Import the `tiledMapLayer `from Esri-Leaflet (`import { tiledMapLayer } from 'esri-leaflet';`)
-2) Create a variable to reference the Esri Imagery tiled map service (`https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer`)
-3) Create an object to reference the two basemaps (Open Street Map and Esri Imagery); set it as an exported variable
+1) Import Esri Leaflet's `tiledMapLayer` class.  It allows us to use raster-based cached map service (`import { tiledMapLayer } from 'esri-leaflet';`)
+2) Import the `tiledMapLayer `from Esri-Leaflet (`import { tiledMapLayer } from 'esri-leaflet';`)
+3) Create a variable to reference the Esri Imagery tiled map service (`https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer`)
+4) Next, we'll create a variable to reference the Esri World Imagery service (`export const esri_imagery = tiledMapLayer({
+    url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer'});`
+5) Create an object to reference the two basemaps (Open Street Map and Esri Imagery); set it as an exported variable
 
 #### MapControls.js
 
