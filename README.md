@@ -161,32 +161,37 @@ This is our primary JavaScript file.  We will be importing variables from other 
 1) add the layer control object to your imports from `mapControls.js` statement
 2) Add the layer control to the webmap (`layerControl.addTo(webmap);`)
 
-#### Overlays.js (start here)
+#### Overlays.js
 
 ###### Add layer from GeoJSON file
 
-1) We will add Harrisburg Parks & Playgrounds via a GeoJSON file.  The data is available on [City of Harrisburg's Open Data Website](https://harrisburg-open-data-cohbg.opendata.arcgis.com/datasets/201e2a9538144b22b106ccd7d7d73846_0)
-2) Import the `geoJSON` object from Leaflet (`import { geoJSON } from 'leaflet';`)
-3) Use the `require` statement to reference the geojson file in the `src/data` directory.  The `parcel-transformer-geojson` library is required to package up this data type (`const parks_data = require('../data/Harrisburg_Parks_Playgrounds.geojson');`)
-22) Create a variable for parks & playgrounds layer (`export const parks_playgrounds = geoJson(parks_data, {});`).  Add this layer to import statement in `index.js`.  Add the layer to the map
-23) You can style the layer as desired
+1)Create an `overlays.js` file in `src/js` directory; it will store map overlay layers
+2) We will add the Harrisburg Parks & Playgrounds layer via a GeoJSON file.  The data is available on [City of Harrisburg's Open Data Website](https://harrisburg-open-data-cohbg.opendata.arcgis.com/datasets/201e2a9538144b22b106ccd7d7d73846_0)
+3) Import the `geoJSON` object from Leaflet (`import { geoJSON } from 'leaflet';`)
+4) The geoJSON file is available at https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/blob/main/src/data/Harrisburg_Parks_Playgrounds.geojson
+5) Use the `require` statement to reference the geojson file in the `src/data` directory.  The `parcel-transformer-geojson` library is required to package up this data type (`const parks_data = require('../data/Harrisburg_Parks_Playgrounds.geojson');`)
+22) Create a variable for parks & playgrounds layer (`export const parks_playgrounds = geoJSON(parks_data, {style: function(feature) { return { color: '#ffffff', weight: 2, fillColor: '#0e5850', fillOpacity: 0.5 } } });`)
+23) Add this layer to the `index.js` file by importing it (`import { parks_playgrounds } from './overlays.js';`)
+24) Add the layer to the webmap (`parks_playgrounds.addTo(webmap);`)
 
 ###### Add layers from Esri REST Service
 
-1) Create an `overlays.js` file in `src/js` directory; it will store map overlay layers
-2) Import the `featureLayer` object from the Esri-Leaflet library. This allows use to use Esri REST services as feature layer; (`import { featureLayer } from 'esri-leaflet';`)
-3) We will be adding CAT bus routes and stops, as well ass the Capital Area Greenwaybelt from a service managed by the City of Harrisburg (`https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Multimodal_Transportation_Map_WFL1/FeatureServer`)
+1) Import the `featureLayer` object from the Esri-Leaflet library. This allows use to use Esri REST services as a feature layer; (`import { featureLayer } from 'esri-leaflet';`)
+3) We will be adding CAT bus routes and stops, as well as the Capital Area Greenwaybelt from a service managed by the City of Harrisburg (`https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Multimodal_Transportation_Map_WFL1/FeatureServer`)
 4) We will create a variable reference to the parent URL
-5) Create a variable for the Capital Area Greenbelt (`export const greenbelt = featureLayer({url: `${hbg_parent_url}/5`,where: "Name = 'CAGA'"});`); notice we applied a definition query; we can view the data in map viewer to understand it
+5) Create a variable for the Capital Area Greenbelt (`export const greenbelt = featureLayer({url: `${hbg_parent_url}/5`,where: "Name = 'CAGA'"});`); notice we applied a definition query;
 6) Import the greenbelt object into the `index.js` file (`import { greenbelt} from './overlays.js';`)
 7) We will now see the Capital Area Greenbelt on the map with the default symbology of Leaflet; The Esri-Renderer's plugin can be used to utilize the symbology the Esri REST service was published with
-8) Create variables for CAT bus stops and routes; import then into index.js; add them to the webmap using the `addTo()` method
-10) We will symbolize bus stops using a custom icon; start by importing the `icon` and `marker` objects from leaflet (`import { icon, marker } from 'leaflet';`)
-11) Create a variable to store the icon properties (`const bus_icon = icon({iconUrl: require('../data/bus-stop.png'), iconSize: [30,30] });`)
-12) Use the `pointToLayer` method to return a `marker` using our bus stop icon
-13) Set style for greenbelt using dashed array
-14) Stop parce; We'll add Esri Leaflet Renderers to use symbology for bus routes; (`npm i esri-leaflet-renderers`);
-15) Import esri leaflet renderers in `overlays.js` file (`import 'esri-leaflet-renderers';`)
+8) Add the `style` property to the Greenbelt layer and apply a custom style
+9) Create variables for CAT bus stops and routes; import then into index.js; add them to the webmap using the `addTo()` method (`export const bus_stops = featureLayer({url: `${hbg_parent_url}/3`});`) (`export const bus_routes = featureLayer({url: `${hbg_parent_url}/4`});`)
+10) Stop Parcel; Let's install Esri Leaflet Renderers to use symbology for bus routes; (`npm i esri-leaflet-renderers`);
+11) Restart Parcel, and import esri leaflet renderers in `overlays.js` file (`import 'esri-leaflet-renderers';`)
+12) We will make the Bus Routes have a thicker line.  Set the style property: `style: function(feature) { return { weight: 4 }`
+13) We will symbolize the Bus Stops using a custom icon; start by importing the `icon` and `marker` objects from leaflet (`import { icon, marker } from 'leaflet';`)
+12) Create a variable to store the icon properties (`const bus_icon = icon({iconUrl: require('../data/bus-stop.png'), iconSize: [30,30] });`)
+13) Use the `pointToLayer` method to return a `marker` using our bus stop icon
+   
+
 16) notice we need to fix symbology
 17) for bus routes, add `ignoreRenderer: true` to ignore published symbology and use our bus icon instead
 18) We can retain published symbology of unique features for bus routes, but use the `style` property to increase the width
