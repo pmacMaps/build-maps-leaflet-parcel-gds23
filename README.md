@@ -1,19 +1,20 @@
-# build-maps-leaflet-parcel-gds23
-Guide to session at GeoDev Summit 2023
+# Coding Interactive Web Maps: A Hands-On Guide to Building with Leaflet.js and Parcel.js
+
+This repository contains the general outline and project files for a presentation I gave at the 2023 [GeoDev Summit](https://summits.harrisburgu.edu/geodev/), held in Harrisburg, Pennsylvania.
 
 ## Required Software
-- Visual Studio Code ([download software](https://code.visualstudio.com/download)): used for writing code to build map application
-- Node.js ([download software](https://nodejs.org/en/download/current)): used for adding libraries for map application
+- Visual Studio Code ([download software](https://code.visualstudio.com/download)): Where we'll be writing our code
+- Node.js ([download software](https://nodejs.org/en/download/)): We'll use Node.js and NPM to install the libraries we'll use in our map application
 
 ## Software Packages
 ### Development
-- [Parcel.js](https://parceljs.org/): Build tool to package files into final application
-- [Parcel GeoJSON Transformer](https://www.npmjs.com/package/parcel-transformer-geojson): Enables using GeoJSON data format with Parcel.js
+- [Parcel.js](https://parceljs.org/): The build tool we'll use to package the files into our final application; also provides a nice development environment
+- [Parcel GeoJSON Transformer](https://www.npmjs.com/package/parcel-transformer-geojson): A Parcel.js plugin that allows us to use GeoJSON data in our map application
 ### Standard
 - [Leaflet.js](https://leafletjs.com/): Library to build interactive web maps
 - [Leaflet Better Scale](https://github.com/daniellsu/leaflet-betterscale): Plugin to create an enhanced map scale bar
-- [Leaflet Fullscreen](https://github.com/Leaflet/Leaflet.fullscreen): Plugin to allow map to go into fullscreen mode
-- [Leaflet Locate Control](https://github.com/domoritz/leaflet-locatecontrol): Plugin to add a "locate me" widget to map
+- [Leaflet Fullscreen](https://github.com/Leaflet/Leaflet.fullscreen): Plugin to allow the map to go into fullscreen mode
+- [Leaflet Locate Control](https://github.com/domoritz/leaflet-locatecontrol): Plugin to add a "locate me" widget to map (allows users to identify their current location)
 - [Leaflet Zoomhome](https://github.com/torfsen/leaflet.zoomhome): Plugin to add a zoom control with a default extent button
 - [Esri Leaflet](https://github.com/Esri/esri-leaflet): Plugin to allow access to Esri REST services
 - [Esri Leaflet Renderers](https://developers.arcgis.com/esri-leaflet/samples/renderers-plugin/): Plugin to display symbology associated with a REST service
@@ -21,14 +22,14 @@ Guide to session at GeoDev Summit 2023
 - [Font Awesome](https://fontawesome.com/): Plugin used to display icons in Leaflet widgets
 
 ## Set-up Project with NPM 
-1. Open up `Command Prompt` application
-2. Change to project directory using `cd {path/to/folder}` command
-3. Alternatively, open up project directory in VS Code. Open Terminal, then follow steps below.
-4. Initialize project using `npm init` command
-5. Complete project initialization via command line
+1. Create a new project directory on your computer
+2. Open VS Code in your project directory
+3. Open the Terminal in VS Code (complete the following steps within the Terminal)
+4. Initialize the project by typing the `npm init` command
+5. Complete the project initialization
 6. Type `yes` to complete initialization
    
-You will now notice a `package.json` file in your project directory.  This file will contain a listing of project packages and other details for the development for your map application.
+You will now notice a `package.json` file in your project directory.  This file will contain a listing of the project libraries and other details for map application.
 
 You can open your project in Visual Studio Code by right-clicking in the folder and selecting `Open with Code`. (note, Windows 11 requires you to select "Show more options" when right-clicking the folder.)
 
@@ -58,11 +59,11 @@ Some packages are used for the development of your project.  This includes Parce
 
 ## Configure Parcel.js
 
-We need to make a few changes to the `package.json` so that it can work with Parcel.js:
-- add `"source": "src/index.html",` : this defines the entry point for Parcel. This is the file(s) that Parcel starts at when building your source code.
+We need to make a few changes to the `package.json` file configure it to work with Parcel.js:
+- add `"source": "src/index.html",` : this defines the entry point for Parcel. This is the file that Parcel starts at when building the source code.
 - remove `"main": "index.js"` : we won't be using this.
 - add `"browserslist": "> 0.5%, last 2 versions, not dead",` : the browser list configuration is used to specify the target browsers that your code should support.  As written, our application should support browsers that have a global usage percentage greater than 0.5%, support the last 2 versions of web browsers, and excludes web browers that are no longer maintained (I used Chat-GPT to explain this property)
-- add `"private": true,` : prevents NPM from publishing your project
+- add `"private": true,` : this prevents NPM from publishing your project
 - within `scripts`, add `"start": "parcel",` : allows you to type `npm run start` to start the Parcel process
 - within `scripts`, add `"build": "parcel build"` : allows you to type `npm run build` to build the production-ready version of your application files
 
@@ -75,9 +76,7 @@ We need to create a `.parcelrc` file to support the .geojson format.  In this fi
   }
 }
 ```
-Next, we need to add the `src` directory.  We will store our application files here.
-
-Within the `src` directory, create `js` and `data` directories.
+Next, we need to add the `src` directory.  We will store our application files here.  Within the `src` directory, create `js` and `data` directories.
 
 ## Create Map Application
 
