@@ -25,6 +25,13 @@ export const scaleBarControl = L.control.betterscale({
 export const locateControl = L.control.locate();
 
 // Layer Control
+/*
 export const layerControl = control.layers(basemapLayers, null, {
+    collapsed: false
+});
+*/
+
+// Layer Control
+export const layerControl = control.layers(basemapLayers, map_overlays, {
     collapsed: false
 });
