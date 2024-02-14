@@ -204,6 +204,8 @@ Pop-ups can display attributes associated with each feature.  In Leaflet, you ca
 
 Before using the template class, you can run functions to re-format the data in your popup.  You can constrict the number of decimal places, split strings, or even test for the presecne or absence of data for each record.
 
+The completed code pop-ups is located at https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/blob/main/src/js/overlays.js.
+
 Below is sample code:
 
 ```
@@ -216,5 +218,3 @@ bus_stops.bindPopup(function (layer) {
     return L.Util.template(content, layer.feature.properties);
 });
 ```
-
-#### Add layers to layer control?
