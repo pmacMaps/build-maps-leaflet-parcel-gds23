@@ -98,6 +98,13 @@ export const bus_routes = featureLayer({
     }
 });
 
+// list of map overlayers for layer toggle
+export const map_overlays = {
+    "Greenbelt Trail": greenbelt,
+    "Parks & Playgrounds": parks_playgrounds,
+    "Bus Stops": bus_stops,
+    "Bus Routes": bus_routes
+}
 // create popup for bus routes
 bus_routes.bindPopup(function (layer) {
     return L.Util.template("<h3>{ROUTE_NAME}</h3>", layer.feature.properties);
