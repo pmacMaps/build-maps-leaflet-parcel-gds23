@@ -163,7 +163,7 @@ This is our primary JavaScript file.  We will be importing variables from other 
 
 #### Overlays.js
 
-###### Add layer from GeoJSON file
+##### Add layer from GeoJSON file
 
 1) Create an `overlays.js` file in `src/js` directory; it will store map overlay layers
 2) We will add the Harrisburg Parks & Playgrounds layer via a GeoJSON file.  The data is available on [City of Harrisburg's Open Data Website](https://harrisburg-open-data-cohbg.opendata.arcgis.com/datasets/201e2a9538144b22b106ccd7d7d73846_0)
@@ -174,29 +174,31 @@ This is our primary JavaScript file.  We will be importing variables from other 
 23) Add this layer to the `index.js` file by importing it (`import { parks_playgrounds } from './overlays.js';`)
 24) Add the layer to the webmap (`parks_playgrounds.addTo(webmap);`)
 
-###### Add layers from Esri REST Service
+##### Add layers from Esri REST Service
 
 1) Import the `featureLayer` object from the Esri-Leaflet library. This allows use to use Esri REST services as a feature layer; (`import { featureLayer } from 'esri-leaflet';`)
-3) We will be adding CAT bus routes and stops, as well as the Capital Area Greenwaybelt from a service managed by the City of Harrisburg (`https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Multimodal_Transportation_Map_WFL1/FeatureServer`)
-4) We will create a variable reference to the parent URL
-5) Create a variable for the Capital Area Greenbelt (`export const greenbelt = featureLayer({url: `${hbg_parent_url}/5`,where: "Name = 'CAGA'"});`); notice we applied a definition query;
-6) Import the greenbelt object into the `index.js` file (`import { greenbelt} from './overlays.js';`)
-7) We will now see the Capital Area Greenbelt on the map with the default symbology of Leaflet; The Esri-Renderer's plugin can be used to utilize the symbology the Esri REST service was published with
-8) Add the `style` property to the Greenbelt layer and apply a custom style
-9) Create variables for CAT bus stops and routes; import then into index.js; add them to the webmap using the `addTo()` method (`export const bus_stops = featureLayer({url: `${hbg_parent_url}/3`});`) (`export const bus_routes = featureLayer({url: `${hbg_parent_url}/4`});`)
-10) Stop Parcel; Let's install Esri Leaflet Renderers to use symbology for bus routes; (`npm i esri-leaflet-renderers`);
-11) Restart Parcel, and import esri leaflet renderers in `overlays.js` file (`import 'esri-leaflet-renderers';`)
-12) We will make the Bus Routes have a thicker line.  Set the style property: `style: function(feature) { return { weight: 4 }`
-13) We will symbolize the Bus Stops using a custom icon; start by importing the `icon` and `marker` objects from leaflet (`import { icon, marker } from 'leaflet';`)
+2) We will be adding CAT bus routes and stops, as well as the Capital Area Greenwaybelt from a service managed by the City of Harrisburg.  Create a variable to reference the parent URL (`https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Multimodal_Transportation_Map_WFL1/FeatureServer`)
+3) Create a variable for the Capital Area Greenbelt (`export const greenbelt = featureLayer({url: `${hbg_parent_url}/5`,where: "Name = 'CAGA'"});`); notice we applied a definition query;
+4) Import the greenbelt object into the `index.js` file (`import { greenbelt} from './overlays.js';`)
+5) We will now see the Capital Area Greenbelt on the map with the default symbology of Leaflet; The Esri-Renderer's plugin can be used to utilize the symbology the Esri REST service was published with
+6) Add the `style` property to the Greenbelt layer and apply a custom style
+7) Create variables for CAT bus stops and routes; import then into index.js; add them to the webmap using the `addTo()` method (`export const bus_stops = featureLayer({url: `${hbg_parent_url}/3`});`) (`export const bus_routes = featureLayer({url: `${hbg_parent_url}/4`});`)
+8) Stop Parcel; Let's install Esri Leaflet Renderers to use symbology for bus routes; (`npm i esri-leaflet-renderers`);
+9) Restart Parcel, and import esri leaflet renderers in `overlays.js` file (`import 'esri-leaflet-renderers';`)
+10) We will make the Bus Routes have a thicker line.  Set the style property: `style: function(feature) { return { weight: 4 }`
+11) We will symbolize the Bus Stops using a custom icon; start by importing the `icon` and `marker` objects from leaflet (`import { icon, marker } from 'leaflet';`)
 12) Create a variable to store the icon properties (`const bus_icon = icon({iconUrl: require('../data/bus-stop.png'), iconSize: [30,30] });`)
-13) Use the `pointToLayer` method to return a `marker` using our bus stop icon
-   
+13) Use the `pointToLayer` method to return a `marker` using our bus stop icon (`pointToLayer: function (geojson, latlng) { return marker(latlng, { icon: bus_icon, alt: 'icon of a bus representing a CAT bus stop'})`)
+14) We want our custom icon to symbolize the Bus Stops.  We must add `ignoreRenderer: true` to overwrite the style applied by the published REST service
 
-16) notice we need to fix symbology
-17) for bus routes, add `ignoreRenderer: true` to ignore published symbology and use our bus icon instead
-18) We can retain published symbology of unique features for bus routes, but use the `style` property to increase the width
+##### Creating Overlay Map Control
 
-###### Adding Pop-ups to Layers
+1) In `overlays.js`, Create an object to reference map overlays (`export const map_overlays = { "Greenbelt Trail": greenbelt, "Parks & Playgrounds": parks_playgrounds, "Bus Stops": bus_stops, "Bus Routes": bus_routes }`)
+2) In `mapControls.js`, import the map overlay object (`import { map_overlays } from './overlays.js';`)
+3) In the `layerControl` variable, replace `null` with ` map_overlays`
+4) Back at the map, you can now toggle the overlays on and off
+
+##### Adding Pop-ups to Layers
 
 Pop-ups can display attributes associated with each feature.  In Leaflet, you can create HTML mark-up to display pop-up content.  You can also reference fields in the data using the `L.Util.template` class.
 
