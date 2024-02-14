@@ -165,7 +165,7 @@ This is our primary JavaScript file.  We will be importing variables from other 
 
 ###### Add layer from GeoJSON file
 
-1)Create an `overlays.js` file in `src/js` directory; it will store map overlay layers
+1) Create an `overlays.js` file in `src/js` directory; it will store map overlay layers
 2) We will add the Harrisburg Parks & Playgrounds layer via a GeoJSON file.  The data is available on [City of Harrisburg's Open Data Website](https://harrisburg-open-data-cohbg.opendata.arcgis.com/datasets/201e2a9538144b22b106ccd7d7d73846_0)
 3) Import the `geoJSON` object from Leaflet (`import { geoJSON } from 'leaflet';`)
 4) The geoJSON file is available at https://github.com/pmacMaps/build-maps-leaflet-parcel-gds23/blob/main/src/data/Harrisburg_Parks_Playgrounds.geojson
