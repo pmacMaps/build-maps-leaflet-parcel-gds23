@@ -135,29 +135,26 @@ This is our primary JavaScript file.  We will be importing variables from other 
 2) Import Leaflet Zoomhome by writing `import 'leaflet.zoomhome/src/js/leaflet.zoomhome.js';`
 3) Import Leaflet Locate Control by writing `import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';`
 4) Import Leaflet Better Scale by writing `import 'leaflet-betterscale/L.Control.BetterScale.js';`
-5) Create a variable for Leaflet Zoom Home control
-6) Create a variable for Leaflet Better Scale control
-7) Create a variable for Leaflet Locate control
+5) Create a variable for Leaflet Zoom Home control (`export const zoomHomeControl = L.Control.zoomHome({position: 'topleft', zoomHomeTitle: 'Full map extent', homeCoordinates: [40.26, -76.89], homeZoom: 12});`)
+6) Create a variable for Leaflet Better Scale control (`export const scaleBarControl = L.control.betterscale({maxWidth: 200, metric: false, imperial: true, updateWhenIdle: true, position: 'bottomleft'});`)
+7) Create a variable for Leaflet Locate control (`export const locateControl = L.control.locate();`)
 
 #### Index.js
 
-1) Import the new controls from `mapControls.js` (`import { zoomHomeControl, scaleBarControl, locateControl} from './mapControls.js';`)
+1) Import the new controls from `mapControls.js` into `index.js` (`import { zoomHomeControl, scaleBarControl, locateControl} from './mapControls.js';`)
 2) Add `zoomControl: false` property to your `webmap` variable to allow Zoom Home Control to take over the work of the zoom control
 3) Add the map controls to the webmap using the `addTo()` method
 
 #### Basemaps.js
 
-1) Import Esri Leaflet's `tiledMapLayer` class.  It allows us to use raster-based cached map service (`import { tiledMapLayer } from 'esri-leaflet';`)
-2) Import the `tiledMapLayer `from Esri-Leaflet (`import { tiledMapLayer } from 'esri-leaflet';`)
-3) Create a variable to reference the Esri Imagery tiled map service (`https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer`)
-4) Next, we'll create a variable to reference the Esri World Imagery service (`export const esri_imagery = tiledMapLayer({
-    url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer'});`
-5) Create an object to reference the two basemaps (Open Street Map and Esri Imagery); set it as an exported variable
+1) Back in `basemaps.js`, import Esri Leaflet's `tiledMapLayer` class.  It allows us to use raster-based cached map services (`import { tiledMapLayer } from 'esri-leaflet';`)
+3) Create a variable to reference the Esri World Imagery service (`https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer`)
+5) Create an object to reference the two basemaps.  We'll use it to create a basemap selector object in `mapControls.js` (`export const basemapLayers = {"Open Street Map": osm, "Satellite (Esri)": esri_imagery};`)
 
 #### MapControls.js
 
 1) Import the basemaps object (`import { basemapLayers} from './basemaps.js';`)
-2) Create a layer control object (`control.layers(basemapLayers, null, { collapsed: false });`)
+2) Create a layer control object.  This allows users to switch between basemaps, as well as turn overlays on/off (`control.layers(basemapLayers, null, { collapsed: false });`)
 
 #### Index.js
 
