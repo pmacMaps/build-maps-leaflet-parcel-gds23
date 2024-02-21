@@ -45,7 +45,7 @@ parks_playgrounds.bindPopup(function(layer) {
 });
 
 // parent service URL
-hbg_parent_url = 'https://services5.arcgis.com/9n3LUAMi3B692MBL/ArcGIS/rest/services/Multimodal_Transportation_Map_WFL1/FeatureServer';
+const hbg_parent_url = 'https://services5.arcgis.com/9n3LUAMi3B692MBL/ArcGIS/rest/services/Multimodal_Transportation_Map_WFL1/FeatureServer';
 
 // capital area greenbelt
 export const greenbelt = featureLayer({
