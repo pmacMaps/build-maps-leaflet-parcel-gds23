@@ -2,7 +2,6 @@
   "name": "test-map-app",
   "version": "1.0.0",
   "description": "test map application",
-  "main": "index.js",
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "private": true,
